@@ -1,0 +1,21 @@
+{
+  "name": "miksir/yii2-db-faker",
+  "description": "Fill your database table with fake data",
+  "type": "yii2-extension",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dmitry MiksIr",
+      "email": "miksir@maker.ru"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "*",
+    "fzaninotto/faker": "~1.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Miksir\\Yii2DbFaker\\": ""
+    }
+  }
+}
