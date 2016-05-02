@@ -37,7 +37,7 @@ Examples
 --------
 
 ```
-yii faker/generate --count=1000000 --dbprovider=YiiDAO generator_template=users dbprovider_table=users truncate=1
+yii faker/generate --count=1000000 --dbprovider=YiiDAO generator_template=users dbprovider_table=users dbprovider_truncate=1
 ```
 
 Truncate table users and create about 1 million rows using template from \@tests/unit/templates/fixtures/users.php

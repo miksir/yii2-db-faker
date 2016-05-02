@@ -19,6 +19,7 @@ class GeneratorTemplate implements DbProviderInterface
 
     /**
      * @param integer $count
+     * @return \Generator
      * @throws Exception
      */
     public function export($count)
@@ -30,6 +31,8 @@ class GeneratorTemplate implements DbProviderInterface
             if (--$count <= 0) {
                 break;
             }
+
+            yield $count;
         }
     }
 }

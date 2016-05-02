@@ -6,7 +6,7 @@ interface DbProviderInterface
 {
     /**
      * @param integer $count
-     * @return void
+     * @return \Generator
      */
     public function export($count);
 }

@@ -96,7 +96,12 @@ class FakerController extends Controller
         }
 
         $this->dbprovider_obj = $container->get(DbProviderInterface::class);
-        $this->dbprovider_obj->export($this->count);
+
+        Console::startProgress(0, $this->count);
+        foreach ($this->dbprovider_obj->export($this->count) as $count) {
+            Console::updateProgress($this->count - $count, $this->count);
+        }
+        Console::endProgress(true);
     }
 
     private function parseArguments($lines)

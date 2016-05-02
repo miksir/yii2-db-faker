@@ -51,6 +51,7 @@ class YiiDAO implements DbProviderInterface
 
     /**
      * @param integer $count
+     * @return \Generator
      * @throws Exception
      */
     public function export($count)
@@ -78,7 +79,7 @@ class YiiDAO implements DbProviderInterface
         // prepare values section, repeat values block $rows_per_request number
         $rows_per_request = 1;
         if ($this->multirow) {
-            $rows_per_request = max(floor($this->placeholder_limit / count($fields)), 1);
+            $rows_per_request = (int)max(floor($this->placeholder_limit / count($fields)), 1);
         }
         $placeholders = "(". implode(",", array_fill(1, count($fields), '?')) . ")";
         $value_placeholders = implode(",", array_fill(1, $rows_per_request, $placeholders));
@@ -96,16 +97,21 @@ class YiiDAO implements DbProviderInterface
                 unset($insert_values[0]);
                 $prepare->bindValues($insert_values);
                 $prepare->execute();
-                $insert_values = $this->array1based($item);
-                $prepared_rows = 1;
-                $count =- $rows_per_request;
+
+                $count = $count - $rows_per_request;
                 if ($count <= 0) {
                     break;
                 }
+                yield $count;
+
+                $insert_values = $this->array1based($item);
+                $prepared_rows = 1;
+
             } else {
                 $insert_values = array_merge($insert_values, array_values($item));
                 $prepared_rows ++;
             }
+
         }
     }
 

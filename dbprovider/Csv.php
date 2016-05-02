@@ -24,7 +24,7 @@ class Csv implements DbProviderInterface
 
     /**
      * @param integer $count
-     * @return void
+     * @return \Generator
      */
     public function export($count)
     {
@@ -36,6 +36,7 @@ class Csv implements DbProviderInterface
                 break;
             }
             $this->out($data);
+            yield $count;
         }
     }
 
