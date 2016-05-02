@@ -25,7 +25,7 @@ class FakerGenerator implements GeneratorInterface
      */
     public $template;
 
-    public function generate()
+    public function generate($count=null)
     {
         if (!$this->templateFullPath) {
             $this->templateFullPath = $this->resolvePath($this->directory, $this->template);
@@ -34,11 +34,15 @@ class FakerGenerator implements GeneratorInterface
         if (is_null($this->generator)) {
             $this->generator = $this->templateFullPath ? \Faker\Factory::create($this->templateFullPath) : \Faker\Factory::create($this->templateFullPath);
         }
-        
-        $index = $this->iterate++;
+
         $faker = $this->generator;
-        $data = require($this->templateFullPath);
-        yield $data;
+
+        while (is_null($count) || $count > 0) {
+            $index = $this->iterate++;
+            $count--;
+            $data = require($this->templateFullPath);
+            yield $data;
+        }
     }
 
     /**

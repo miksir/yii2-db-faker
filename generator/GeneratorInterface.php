@@ -9,5 +9,5 @@ interface GeneratorInterface
     /**
      * @return \Generator
      */
-    public function generate();
+    public function generate($count=null);
 }
