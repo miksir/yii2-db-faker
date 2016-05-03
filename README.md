@@ -1,12 +1,16 @@
-This Yii2 command can fill your database with fake data.
+This Yii2 command can fill your database with fake data. Useful if you need lot of fake data, 1 mil rows and more.
 
-You can switch between different data generators (or write your own) and
-different database connectors.
+You can switch between different data generators (or write your own) and different database connectors.
+
+Props:
+- you can write own sources of fake data (proxy to fzaninotto/Faker included)
+- different connectors to datbase for save data. ActiveRecord - slow but with model logic, YiiDAO - fast batch insert,
+TODO: postgresql COPY connector.
 
 Generators included:
 - FakeGenerator: this is proxy to [`Faker`](https://github.com/fzaninotto/Faker)
-and use same logic, paths and templates as [`yii2-faker`](https://github.com/yiisoft/yii2-faker) . Read yii2-faker documentation about
-creating fixtures template file
+and use same logic, paths and templates as [`yii2-faker`](https://github.com/yiisoft/yii2-faker) . Read yii2-faker
+documentation about creating fixtures template file
 
 Database connectors (called here as dbproviders):
 - Csv: simple csv writer
