@@ -20,6 +20,11 @@ Database connectors (called here as dbproviders):
 Installation
 ------------
 
+Use composer :)
+```
+composer require miksir/yii2-db-faker
+```
+
 You should configure your application as follows
 (usually in console.php; and you can use any alias, not only "faker"):
 
