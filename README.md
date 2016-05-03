@@ -17,6 +17,7 @@ Database connectors (called here as dbproviders):
 - ActiveRecord: create model, fill with data and call ->save()
 - YiiDAO: insert data using sql (via Yii's PDO), can insert multiple rows per one insert
 
+
 Installation
 ------------
 
